@@ -1,10 +1,9 @@
 require 'csv'
 
 class Processor
-  attr_reader :summary
-
-  def initialize(data_file_path)
+  def initialize(data_file_path, summary_file_path)
     @data_file_path = data_file_path
+    @summary_file_path = summary_file_path
     @summary = { }
   end
 
@@ -24,6 +23,13 @@ class Processor
         end
       else
         @summary[violation_category] = { count: 1, earlist: violation_date, latest: violation_date }
+      end
+    end
+
+    CSV.open(@summary_file_path, 'wb', headers: true) do |csv|
+      csv << ['Violation category', '# of violations', 'Earlist violation date', 'Latest violation date']
+      @summary.each_pair do |category, data|
+        csv << [category, data[:count], data[:earlist].strftime('%F %T'), data[:latest].strftime('%F %T')]
       end
     end
   end

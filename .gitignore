@@ -1,2 +1,5 @@
 # IDE settings
 .idea/
+
+# OS stuff
+.DS_Store

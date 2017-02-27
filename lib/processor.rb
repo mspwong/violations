@@ -19,6 +19,9 @@ class Processor
         if category[:earlist] > violation_date
           category[:earlist] = violation_date
         end
+        if category[:latest] < violation_date
+          category[:latest] = violation_date
+        end
       else
         @summary[violation_category] = { count: 1, earlist: violation_date, latest: violation_date }
       end

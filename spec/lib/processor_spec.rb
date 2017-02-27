@@ -45,5 +45,17 @@ describe Processor do
       expect(summary_data[7][:earlist]).to eq DateTime.parse('2012-12-05 00:00:00')
       expect(summary_data[8][:earlist]).to eq DateTime.parse('2012-12-20 00:00:00')
     end
+
+    it 'tracks the latest violation date for each category' do
+      expect(summary_data[0][:latest]).to eq DateTime.parse('2012-12-21 00:00:00')
+      expect(summary_data[1][:latest]).to eq DateTime.parse('2012-12-19 00:00:00')
+      expect(summary_data[2][:latest]).to eq DateTime.parse('2012-12-28 00:00:00')
+      expect(summary_data[3][:latest]).to eq DateTime.parse('2012-12-26 00:00:00')
+      expect(summary_data[4][:latest]).to eq DateTime.parse('2012-12-05 00:00:00')
+      expect(summary_data[5][:latest]).to eq DateTime.parse('2012-12-06 00:00:00')
+      expect(summary_data[6][:latest]).to eq DateTime.parse('2012-12-18 00:00:00')
+      expect(summary_data[7][:latest]).to eq DateTime.parse('2012-12-19 00:00:00')
+      expect(summary_data[8][:latest]).to eq DateTime.parse('2012-12-20 00:00:00')
+    end
   end
 end

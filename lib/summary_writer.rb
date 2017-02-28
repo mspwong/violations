@@ -4,6 +4,10 @@ class SummaryWriter
   SUMMARY_HEADERS = ['Violation category', '# of violations', 'Earlist violation date', 'Latest violation date']
   SUMMARY_DATE_FORMAT = '%F %T'
 
+  def self.run(summary_file_path, summary)
+    SummaryWriter.new(summary_file_path, summary).run
+  end
+
   def initialize(summary_file_path, summary)
     @summary_file_path = summary_file_path
     @summary = summary

@@ -1,4 +1,8 @@
 class ViolationsTracker
+  def self.run(violations, category_key, date_key)
+    ViolationsTracker.new(violations, category_key, date_key).run
+  end
+
   def initialize(violations, category_key, date_key)
     @violations = violations
     @category_key = category_key

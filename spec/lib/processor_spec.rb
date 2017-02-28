@@ -1,14 +1,14 @@
 require 'processor'
 
 describe Processor do
-  describe '#run' do
+  describe '::run' do
     let(:data_file_path)      { 'spec/fixtures/Violations-2012.csv' }
     let(:summary_file_path)   { 'tmp/summary.csv' }
     let(:summary)             { CSV.read(summary_file_path, headers: true) }
 
-    subject { described_class.new(data_file_path, summary_file_path) }
+    subject { described_class.run(data_file_path, summary_file_path) }
 
-    before { subject.run }
+    before { subject }
 
     it 'determines and writes the violation categories' do
       expect(summary[0][0]).to eq 'Garbage and Refuse'

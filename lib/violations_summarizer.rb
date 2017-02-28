@@ -1,6 +1,6 @@
-class ViolationsTracker
+class ViolationsSummarizer
   def self.run(violations, category_key, date_key)
-    ViolationsTracker.new(violations, category_key, date_key).run
+    ViolationsSummarizer.new(violations, category_key, date_key).run
   end
 
   def initialize(violations, category_key, date_key)

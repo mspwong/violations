@@ -1,5 +1,5 @@
 require 'violations_reader'
-require 'violations_tracker'
+require 'violations_summarizer'
 require 'summary_writer'
 
 class Processor
@@ -14,7 +14,7 @@ class Processor
 
   def run
     violations = ViolationsReader.run(@data_file_path)
-    summary = ViolationsTracker.run(violations, ViolationsReader::CATEGORY_HEADER, ViolationsReader::DATE_HEADER)
+    summary = ViolationsSummarizer.run(violations, ViolationsReader::CATEGORY_HEADER, ViolationsReader::DATE_HEADER)
     SummaryWriter.run(@summary_file_path, summary)
   end
 end

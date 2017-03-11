@@ -24,13 +24,15 @@ class ViolationsSummarizer
   private
 
   def track_violation(violation_category, violation_date)
-    if @summary.has_key?(violation_category)
-      category = @summary[violation_category]
-      track_violation_count(category)
-      track_violation_date(category, violation_date)
-    else
+    @summary.has_key?(violation_category) ?
+      update_violation_category(violation_category, violation_date) :
       seed_violation_category(violation_category, violation_date)
-    end
+  end
+
+  def update_violation_category(violation_category, violation_date)
+    category = @summary[violation_category]
+    track_violation_count(category)
+    track_violation_date(category, violation_date)
   end
 
   def seed_violation_category(violation_category, violation_date)
